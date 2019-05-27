@@ -8,10 +8,12 @@ export default {
                 commit(FETCH_POST_LIST, res.data)
             })
     },
-    fetchPost ({ commit }, postId){
+    fetchPost ({ commit }, postId ){
         return api.get(`/posts/${postId}`)
-            .then(res =>{
-                commit(FETCH_POST. res.data)
+            .then(res => {
+                commit(FETCH_POST, res.data)
             })
+
     }
+
 }

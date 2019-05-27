@@ -15,11 +15,11 @@ export default new Router({
       name: 'PostListPage',
       component: PostListPage
     },
-    { 
+    {
       path: '/post/:postId',
       name: 'PostViewPage',
       component: PostViewPage,
-      props: true
+      props: true 
     },
     { 
       path: '/signup',

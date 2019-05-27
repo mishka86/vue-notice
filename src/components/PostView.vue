@@ -3,10 +3,9 @@
         <div>
             <h1>{{ post.title }}</h1>
             <span>게시물 번호 {{ post.id }}</span>
-            <Strong>{{ post.user.name }}.{{ post.createdAt }}</Strong>
+            <strong>{{ post.user.name }} . {{ post.createdAt }}</strong>
         </div>
         <p>{{ post.contents }}</p>
-
     </div>
 </template>
 
@@ -18,13 +17,13 @@ export default {
         post: {
             type: Object,
             required: true,
-            validator(post) {
+            validator (post) {
                 const isValidPostId = typeof post.id === 'number'
                 const isValidTitle = !!post.title && post.title.length
-                const isValidContents = post.cotents ** post.contents.length
-                return isValidPostId && isValidTitle && isValidContents
+                const isValidContents = post.contents && post.contents.length
+                return isValidPostId && isValidTitle && isValidContents 
             }
         }
-    },
+    }
 }
 </script>
