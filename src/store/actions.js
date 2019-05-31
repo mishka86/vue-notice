@@ -1,5 +1,8 @@
 import api from '@/api'; 
-import { FETCH_POST_LIST,FETCH_POST,SET_ACCESS_TOKEN,SET_MY_INFO,DESTROY_ACCESS_TOKEN,DESTROY_MY_INFO,UPDATE_COMMENT } from './mutations-types';
+import { FETCH_POST_LIST,FETCH_POST } from './mutations-types';
+import { SET_ACCESS_TOKEN,SET_MY_INFO,DESTROY_ACCESS_TOKEN,DESTROY_MY_INFO } from './mutations-types';
+import { UPDATE_COMMENT,EDIT_COMMENT,DELETE_COMMENT } from './mutations-types';
+
 
 export default {
     fetchPostList ({ commit }) {
@@ -43,6 +46,20 @@ export default {
                 commit(UPDATE_COMMENT, res.data)
             })
 
+    },
+    editComment({commit, state}, {commentId, comment}){
+        const postId = state.post.id
+        return api.put(`/posts/${postId}/comments/${commentId}`, {contents: comment})
+            .then(res=> {
+                commit(EDIT_COMMENT, res.data)
+            })
+    },
+    deleteComment({commit, state}, commentId){
+        const postId = state.post.id
+        return api.delete(`/posts/${postId}/comments/${commentId}`)
+            .then(res => {
+                commit(DELETE_COMMENT, commentId)
+            })
     }
 
 

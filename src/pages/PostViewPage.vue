@@ -56,7 +56,7 @@ export default {
                     })
             }
         },
-         ...mapActions([ 'createComment' ]),
+        ...mapActions([ 'createComment' ]),
     },
     props: {
         postId: {
