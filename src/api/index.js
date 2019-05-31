@@ -9,7 +9,7 @@ api.interceptors.response.use(function(response)
     return response;
 }, function(error){
     //에러트래킹 함수호출
-    sendErrorReport(error);
+    
     return Promise.reject(error);
 });
 
